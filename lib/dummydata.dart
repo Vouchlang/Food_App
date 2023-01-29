@@ -1,0 +1,298 @@
+import 'package:flutter/material.dart';
+import 'models/category.dart';
+import 'models/meal.dart';
+
+const DUMMY_CATEGORIES = const [
+  Category(id: 'c1', title: 'Italian', color: Colors.deepOrangeAccent),
+  Category(id: 'c2', title: 'Spanish', color: Colors.cyan),
+  Category(id: 'c3', title: 'UK', color: Colors.pink),
+  Category(id: 'c4', title: 'American', color: Colors.blueAccent),
+  Category(id: 'c5', title: 'Cambodian', color: Colors.blue),
+  Category(id: 'c6', title: 'Thai', color: Colors.redAccent),
+  Category(id: 'c7', title: 'Laos', color: Colors.purple),
+  Category(id: 'c8', title: 'Vietnamese', color: Colors.amberAccent),
+  Category(id: 'c9', title: 'Chinese', color: Colors.amber),
+  Category(id: 'c10', title: 'Japanese', color: Colors.red),
+];
+const DUMMY_MEAL = const [
+  Meal(
+      id: 'm1',
+      categories: ['c1', 'c2'],
+      imageUrl:
+          'https://imgs.search.brave.com/w-_GYeL7O-6DNJd2Ufn3roKt3k_EtDjEX3jBfohS88c/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5w/blBwaW1oTmdyTWtt/REtzdlhzNGpRSGFI/YSZwaWQ9QXBp',
+      title: 'Pizza',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: false,
+      isLactoseFree: false,
+      isVegan: false,
+      isVegetarian: true),
+  Meal(
+      id: 'm2',
+      categories: ['c2', 'c3', 'c1'],
+      imageUrl:
+          'https://imgs.search.brave.com/iSkHkWm8b5YFqavwpuc8b1hX_ZIqdiWunwpYnUfCyiQ/rs:fit:1200:1157:1/g:ce/aHR0cHM6Ly9iZ3Iu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIwLzA1L2hhbWJ1/cmdlcnMtY2hlZXNl/YnVyZ2Vycy5qcGc_/cXVhbGl0eT03MCZz/dHJpcD1hbGw',
+      title: 'Hamburger',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: false,
+      isLactoseFree: false,
+      isVegan: false,
+      isVegetarian: false),
+  Meal(
+      id: 'm3',
+      categories: ['c3', 'c4'],
+      imageUrl:
+          'https://imgs.search.brave.com/NEe3AKZ2c-IF9P-NzrPcbXc57BRwVbN8tIoI9EDMRzo/rs:fit:1111:1200:1/g:ce/aHR0cHM6Ly9mb29k/Ynlqb25pc3Rlci5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDMvdGhhaXNv/dXA3LmpwZw',
+      title: 'Curry',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: false,
+      isLactoseFree: false,
+      isVegan: true,
+      isVegetarian: true),
+  Meal(
+      id: 'm4',
+      categories: ['c4', 'c5'],
+      imageUrl:
+          'https://imgs.search.brave.com/hZ8ynL-eLjAwdtkC3_UdekYPRUWzVGsbFJWqusCSGig/rs:fit:474:416:1/g:ce/aHR0cHM6Ly8xLmJw/LmJsb2dzcG90LmNv/bS8tZ3N0QzhUUFdI/VVEvWHlXM2xGZHAw/UkkvQUFBQUFBQUFI/cmMvV1JNeGYycWZZ/ZU1nMWlvWElPNi1Z/Nm95dVNtaWFSSzFn/Q0xjQkdBc1lIUS9z/MTYwMC9za2lubGVz/cy1ib25lbGVzcy1j/aGlja2VuLWJyZWFz/dC1zb3VzLXZpZGUt/cmVjaXBlLmpwZw',
+      title: 'Chicken',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: false,
+      isLactoseFree: false,
+      isVegan: false,
+      isVegetarian: false),
+  Meal(
+      id: 'm5',
+      categories: ['c5', 'c6'],
+      imageUrl:
+          'https://imgs.search.brave.com/aaqmamQA204wwfPYz6Js6Bb6ZYVXNEcqKhaGFc30GE8/rs:fit:1200:1200:1/g:ce/aHR0cDovL3ZpZXRu/YW0tb25saW5lLm9y/Zy93cC1jb250ZW50/L3VwbG9hZHMvMjAy/MC8wMi9zcHJpbi1y/LmpwZw',
+      title: 'Spring Rolls',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: false,
+      isLactoseFree: false,
+      isVegan: true,
+      isVegetarian: true),
+  Meal(
+      id: 'm6',
+      categories: ['c6', 'c7'],
+      imageUrl:
+          'https://imgs.search.brave.com/1KTctWExAshmJUfczdaz0Zhy_vmE7zVjxNIMBF4Alx8/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9pMi53/cC5jb20vY29sZXlj/b29rcy5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMTkvMDYv/VGhhaS1HcmVlbi1Q/YXBheWEtU2FsYWQt/NS5qcGc_cmVzaXpl/PTQ5MjElMkMzMjgx/JnNzbD0x',
+      title: 'Papaya Salad',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: true,
+      isLactoseFree: true,
+      isVegan: true,
+      isVegetarian: true),
+  Meal(
+      id: 'm7',
+      categories: ['c7', 'c8'],
+      imageUrl:
+          'https://imgs.search.brave.com/pw6OLr1oHcUSku1xTjGl0ySwQLjAIGmyy0EQa0-ew3A/rs:fit:700:700:1/g:ce/aHR0cHM6Ly9pMS53/cC5jb20vd3d3LmZy/ZXNob3V0dGF0aW1l/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAxOS8wMy9UYWNv/LUhvbGRlci1TZXQu/anBnP3Jlc2l6ZT03/MDAlMkM3MDAmc3Ns/PTE',
+      title: 'Taco',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: true,
+      isLactoseFree: false,
+      isVegan: true,
+      isVegetarian: true),
+  Meal(
+      id: 'm8',
+      categories: ['c8', 'c9'],
+      imageUrl:
+          'https://imgs.search.brave.com/FhryBDFVeb0t3VPs_aEj5fa2-n1eXOuewlXPVxCmtJs/rs:fit:800:800:1/g:ce/aHR0cHM6Ly9oZWFs/dGh5bmliYmxlc2Fu/ZGJpdHMuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDE5LzEy/L1NwaWN5LU5vb2Rs/ZXMtd2l0aC1QYW4t/RnJpZWQtVG9mdS1G/Ri5qcGc',
+      title: 'Spicy Noodle',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: true,
+      isLactoseFree: false,
+      isVegan: true,
+      isVegetarian: true),
+  Meal(
+      id: 'm9',
+      categories: ['c9', 'c10'],
+      imageUrl:
+          'https://imgs.search.brave.com/gZFyWXQw7SAlpEnoSqpkUHRaOEMsxF0pKbfl462f_J8/rs:fit:759:755:1/g:ce/aHR0cHM6Ly9jZG4u/a2VlcG8ubWUvaW1h/Z2VzL3Bvc3QvbGlz/dHMvMjAyMC8wMS8y/Ny9tYWluLWxpc3Qt/aW1hZ2UtYmQ3NzM1/ZDctYzMzMS00NWY4/LWFjOTUtY2EzMGUy/OWE1Njc1LTMuanBn',
+      title: 'Kimbab',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: true,
+      isLactoseFree: true,
+      isVegan: false,
+      isVegetarian: true),
+  Meal(
+      id: 'm10',
+      categories: ['c10', 'c1'],
+      imageUrl:
+          'https://www.gannett-cdn.com/-mm-/7b7a8c8440abf2a99879e99cd51f4f8a8929d68e/c=0-447-7144-4465/local/-/media/2018/05/14/USATODAY/usatsports/wp-USAT-allthemoms-front1-17721-pastaolivegarden.jpg?width=3200&height=1800&fit=crop&format=pjpg&auto=webp',
+      title: 'Spaghetti with tomato sauce10',
+      affordability: Affordability.affordable,
+      complexity: Complexity.simple,
+      duration: 20,
+      ingredients: [
+        '4 tomatoes',
+        '1 table spoon of Olive oil',
+        '1 onion',
+        '250g spaghetti',
+        'Spices',
+        'Cheese (optional)'
+      ],
+      steps: [
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+        'Cut the tomatoes and the onion into small pieces',
+      ],
+      isGlutinFree: false,
+      isLactoseFree: false,
+      isVegan: true,
+      isVegetarian: true),
+];
