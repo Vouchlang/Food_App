@@ -25,7 +25,7 @@ class _FiltersScreenState extends State<FiltersScreen> {
       activeColor: Colors.amber,
       value: currentValue,
       subtitle: Text(description),
-      onChanged: () => updateValue,
+      onChanged: updateValue(),
     );
   }
 
