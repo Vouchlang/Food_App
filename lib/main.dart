@@ -10,8 +10,26 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Map<String, bool> _filters = {
+    'gluten': false,
+    'lactose': false,
+    'vegan': false,
+    'vegetarian': false,
+  };
+
+  void _setFilter(Map<String, bool> filterData) {
+    setState(() {
+      _filters = filterData;
+    });
+  }
 
   // This widget is the root of your application.
   @override
@@ -39,7 +57,7 @@ class MyApp extends StatelessWidget {
         CategoriesMeal.routName: (ctx) => CategoriesMeal(),
         MealDetailScreen.routName: (ctx) => MealDetailScreen(),
         FavoritesScreen.routName: (ctx) => FavoritesScreen(),
-        FiltersScreen.routName: (ctx) => FiltersScreen()
+        FiltersScreen.routName: (ctx) => FiltersScreen(_setFilter)
       },
       onGenerateRoute: (settings) {
         print(settings.arguments);
